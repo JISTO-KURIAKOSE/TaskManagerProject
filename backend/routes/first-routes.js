@@ -1,19 +1,18 @@
+// routes/first-routes.js
 const express = require('express');
 const router = express.Router();
 const Task = require('../db/schema/first');
 
-// Create a task
 router.post('/', async (req, res) => {
   try {
     const task = await Task.create(req.body);
     res.status(201).json(task);
   } catch (err) {
-    console.error('❌ Error creating task:', err.message);
+    console.error('Error creating task:', err.message);
     res.status(400).json({ error: err.message });
   }
 });
 
-// Get tasks (with optional status filter)
 router.get('/', async (req, res) => {
   try {
     const status = req.query.status;
@@ -25,17 +24,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Delete a task
-router.delete('/:id', async (req, res) => {
-  try {
-    await Task.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Task deleted' });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-// Update a task
 router.patch('/:id', async (req, res) => {
   try {
     const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
@@ -43,7 +31,16 @@ router.patch('/:id', async (req, res) => {
     });
     res.json(updatedTask);
   } catch (err) {
-    res.status(500).json({ message: 'Error updating task' });
+    res.status(500).json({ error: 'Error updating task' });
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    await Task.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Task deleted' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
   }
 });
 
