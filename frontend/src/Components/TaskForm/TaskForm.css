@@ -1,0 +1,79 @@
+.task-form {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 25px;
+  padding: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.task-form h2 {
+  margin-bottom: 25px;
+  font-size: 1.7rem;
+  text-align: center;
+  color: #fff;
+}
+
+.task-form label {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  display: block;
+  color: #f0f0f0;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+  outline: none;
+}
+
+.task-form input::placeholder,
+.task-form textarea::placeholder {
+  color: #ccc;
+}
+
+.task-form button {
+  width: 100%;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.task-form button:hover {
+  background: linear-gradient(135deg, #185a9d, #43cea2);
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .task-form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .task-form h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-form {
+    padding: 15px;
+  }
+}
