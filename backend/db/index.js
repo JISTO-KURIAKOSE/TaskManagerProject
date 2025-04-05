@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
+require('dotenv').config();
+
 mongoose
-  .connect('mongodb://localhost:27017/taskmanager', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log('Connected to TaskManagementDB');
   })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log('MongoDB error:', err));
+  .catch(e => {
+    console.log(e);
+  });
 
 module.exports = mongoose;
