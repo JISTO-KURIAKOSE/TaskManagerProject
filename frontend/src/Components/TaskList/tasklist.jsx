@@ -19,7 +19,7 @@ const TaskList = ({ tasks, fetchTasks }) => {
   const handleEditSave = async () => {
     try {
       await axios.patch(
-        `http://localhost:8008/api/tasks/${editTask._id}`,
+        `https://taskmanagerproject-qzlz.onrender.com/api/tasks/${editTask._id}`,
         editTask
       );
       setEditTask(null);
@@ -31,7 +31,9 @@ const TaskList = ({ tasks, fetchTasks }) => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`http://localhost:8008/api/tasks/${deleteTaskId}`);
+      await axios.delete(
+        `https://taskmanagerproject-qzlz.onrender.com/api/tasks/${deleteTaskId}`
+      );
       setDeleteTaskId(null);
       fetchTasks();
     } catch (error) {

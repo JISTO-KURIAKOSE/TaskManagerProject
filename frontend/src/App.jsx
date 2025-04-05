@@ -11,7 +11,9 @@ function App() {
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        `/api/tasks${filter ? '?status=' + filter : ''}`
+        `https://taskmanagerproject-qzlz.onrender.com/api/tasks${
+          filter ? '?status=' + filter : ''
+        }`
       );
       setTasks(res.data);
     } catch (err) {
@@ -30,7 +32,10 @@ function App() {
       <TaskForm
         onSubmit={async taskData => {
           try {
-            await axios.post('/api/tasks', taskData);
+            await axios.post(
+              'https://taskmanagerproject-qzlz.onrender.com/api/tasks',
+              taskData
+            );
             fetchTasks();
           } catch (error) {
             console.error('Error adding task:', error);
